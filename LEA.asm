@@ -1,9 +1,20 @@
 .model small
 .stack 100h
 .data
+
 ; data segment
+
+MSG db 'HELLO! Enter a number: $'
+
 .code
 main proc
+    mov ax,@data
+    mov ds,ax
+    
+    lea dx,MSG
+    mov ah,9
+    int 21h
+    
     mov ah,1 ; input key function
     int 21h  ; ASCII code in AL
     mov bl,al ; bl = al
